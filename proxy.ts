@@ -1,15 +1,13 @@
 import { NextResponse } from "next/server";
 import type { NextRequest } from "next/server";
 
-export function middleware(request: NextRequest) {
+export function proxy(request: NextRequest) {
   const { pathname } = request.nextUrl;
 
-  // Don't redirect the home page itself
   if (pathname === "/") {
     return NextResponse.next();
   }
 
-  // Redirect everything else to home (coming soon page)
   return NextResponse.redirect(new URL("/", request.url));
 }
 
